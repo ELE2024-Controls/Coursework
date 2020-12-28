@@ -1,12 +1,29 @@
 import sympy as sym
+import numpy as np
 
-m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, X_min, X_max = sym.symbols('m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, X_min, X_max')
+m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i = sym.symbols('m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i')
+
+L = L0 + (L1 * exp(-α * y))
+Fmag = c(i**2/y**2)
+y = δ - x1
+
+k = k1
+k2 = F.diff(k1)
+x2 = F.diff(x1)
+
+F = ((veq^2)*(2*c/(3*(R*y+L)**2*m))) + ((2/(3*g))*np.sin(φ)) - ((2/3)*b*x2eq) - ((2/(3*m)*(k1*(x1eq - d)))-((2/(3*m)*k2*(x1eq-d)**3))
+
+X_min = d + ((m * g * (sym.sin(φ))/k)
+X_max = δ
+
 
 # Equilibrium point
-F = 0
+
+Feq = 0
 x2eq = 0
 x1eq = Xe
-veq
+veq = ieq * R
+
 
 # GIVEN VALUES!
 m_value = 0.425
@@ -24,10 +41,6 @@ b_value = 10.4
 φ_value = 42
 
 
-F = ((veq^2)*(2*c/(3*(R*y+L)**2*m))) + ((2/(3*g))*np.sin(φ)) - ((2/3)*b*x2eq) - ((2/(3*m)*(k1*(x1eq - d)))-((2/(3*m)*k2*(x1eq-d)**3))
-
-X_min = d + ((m * g * (sym.sin(φ))/k)
-X_max = δ
 
 
 def evaluate_at_given_parameters(z):
@@ -42,8 +55,6 @@ X_min_value = evaluate_at_given_parameters(X_min)
 X_max_value = evaluate_at_given_parameters(X_max)
 F_value_1 = evaluate_at_given_parameters(F, Xe = X_min_value)
 F_value_2 = evaluate_at_given_parameters(F, Xe = X_max_value)
-
-#
 
 sym.pprint(F_value_1)
 print("")
