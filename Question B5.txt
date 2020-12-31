@@ -1,0 +1,7 @@
+Problem B5 - assuming x can be measured and V is manipulated accordingly. 
+The effectiveness of the pid controller is determined by a graph showing 
+how the distance from Xsp varies over time, an effective controller will
+show the wooden ball converging to Xsp quickly and exhibiting no 
+oscillations, the controller will then keep the ball at Xsp and not allow
+it to diverge away from that set point. a good set of evidence would be a 
+graph plotted showing that the system meets the requirements.
