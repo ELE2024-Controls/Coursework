@@ -27,12 +27,12 @@ def evaluate_at_given_parameters(z):
     """
     return float(z.subs([(m, m_value), (g, g_value), (d, d_value), (δ, δ_value), (r, r_value), (R, R_value), (L0, L0_value), (L1, L1_value), (α, α_value), (c, c_value), (k, k_value), (b, b_value), (φ, φ_value)]))
 
-y = δ - x1
-L = L0 + (L1 * np.exp(-α * y))
-
 X_min = d + (m * g * sym.sin(φ)/k)
 X_max = δ
 x1 = 0.75 * X_min + 0.25 * X_max
+
+y = δ - x1
+L = L0 + (L1 * np.exp(-α * y))
 
 q, u, w = sym.symbols('q, u, w', real=True, positive=True)
 s, t = sym.symbols('s, t')
