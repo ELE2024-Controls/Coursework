@@ -1,24 +1,79 @@
 import sympy as sym
+import numpy as np
+from scipy.integrate import solve_ivp
 
 m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe, veq = sym.symbols('m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe, veq')
 
 # GIVEN VALUES!
+#Ball values
 m_value = 0.425
+r_value = 0.125
 g_value = 9.81
+
+#Measurements
 d_value = 0.42
 δ_value = 0.65
-r_value = 0.125
+
+# Magnet values
 R_value = 53
 L0_value = 0.120
 L1_value = 0.025
 α_value = 1.2
 c_value = 6815
+
+# Dampner/spring values
 k_value = 1880
 b_value = 10.4
-φ_value = 42
+
+# Board values
+φ_value = 42 # Incline
+
+class System:
+
+    def __init__(self, mass=m_value, radius=r_value,dampening=b_value, spring=k_value, x=δ_value/2, velocity=0): #initialising x between magnet and damp.
+        """
+        Initialises ball class and it's parameters.
+        :param mass: mass of ball (kg)
+        :param velocity: Initial velocity (m/s)
+        :param x: Initial x-position (m)
+        :param radius: size of radius in ball (m)
+        :param dampening : dampener coefficient(Ns/m)
+        :param spring : spring coefficient(N/m)
+        """
+        self.mass = mass
+        self.radius = radius
+        self.dampening = dampening
+        self.spring = spring
+        self.x = x
+        self.velocity = velocity
+
+    def move(self, voltage, dt):
+        """
+        This function computes and updates new position
+        of ball and apply given voltage for "dt" time
+
+        :param voltage: voltage input (V)
+        :param dt: Time discrete interval
+        """
+
+        def system_dynamics(t, z): #TBD, insert dynamics for IVP solve. Placeholder below
+             theta = z[2]
+            # return [self.velocity * np.cos(theta),
+            #         self.velocity * np.sin(theta),
+            #         self.velocity * np.tan(steering_angle_rad) / self.length]
+
+        # next we need to solve the IVP
+        z_initial = [self.x, self.y, self.theta]
+        solution = solve_ivp(system_dynamics,
+                             [0, dt],
+                             z_initial)
+        self.x = solution.y[0][-1]
+        self.y = solution.y[1][-1]
+        self.theta = solution.y[2][-1]
 
 # Equilibrium point
-
+# x - position of ball
+# by graph of example, ball starts at, if δ max length
 x2eq = 0
 
 X_min = d + (m * g * sym.sin(φ)/k)
