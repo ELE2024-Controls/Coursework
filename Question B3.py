@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq = sym.symbols('m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq')
 
+# Question B3 Determine and plot the impulse and step responses of the transfer function of the linearised system
+
 # GIVEN VALUES!
 m_value = 0.425
 g_value = 9.81
