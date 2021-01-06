@@ -1,6 +1,6 @@
 import sympy as sym
 
-m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe = sym.symbols('m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe')
+m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe, veq = sym.symbols('m, g, d, δ, r, R, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, Xe, veq')
 
 # GIVEN VALUES!
 m_value = 0.425
@@ -19,7 +19,6 @@ b_value = 10.4
 
 # Equilibrium point
 
-Feq = 0
 x2eq = 0
 
 X_min = d + (m * g * sym.sin(φ)/k)
@@ -66,4 +65,26 @@ print("Validating Feq at X_max")
 print("")
 sym.pprint(Feq_max)
 
+# Feq = (veq**2)*(2*c_value/m_value*3*(R_value*y_min_value+L_min_value)**2) + (2/3)*g_value*sym.sin(φ_value) - (2/3)*b_value*x2eq - (2/3*m_value)*k1*(X_min_value - d_value)-(2/3*m_value)*k2*(X_min_value-d_value)**3
+# sym.solve(Feq, veq)
 
+#print("")
+#print("Finding veq")
+#print("")
+#sym.pprint(veq)
+
+#answer_voltage = sym.solve(Feq, veq)
+#answer_current = sym.solve(Feq, ieq)
+
+# voltage is at max value when differential = 0
+
+#F = ((v^2)*(2*c/(3*(R*y+L)**2*m))) + ((2/3)*g*(sym.sin(φ))) - ((2/3)*b*x2) - ((2/(3*m)*(k1*(x1 - d)))-((2/(3*m)*k2*(x1-d)**3))
+
+#voltage_equation = sym.solve(F, v)
+
+#vdiff = sym.diff(v)
+
+#answer_xe = sym.solve(vdiff = 0, xe)
+
+#sym.pprint(answer_xe)
+#print("")
