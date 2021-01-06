@@ -32,6 +32,7 @@ dx2 = (v**2)*(2*c/m*3*(R*y+L)**2) + (2/3)*g*sym.sin(φ) - (2/3)*b*x2 - (2/3*m)*k
 # defining Xe(x1) and X2 at Equilibrium point
 
 x2eq = 0
+dx2eq = 0
 X_min = d + (m * g * sym.sin(φ)/k)
 X_max = δ
 
@@ -96,16 +97,3 @@ sym.pprint(dx2eq_max)
 
 #answer_voltage = sym.solve(Feq, veq)
 #answer_current = sym.solve(Feq, ieq)
-
-# voltage is at max value when differential = 0
-
-#F = ((v^2)*(2*c/(3*(R*y+L)**2*m))) + ((2/3)*g*(sym.sin(φ))) - ((2/3)*b*x2) - ((2/(3*m)*(k1*(x1 - d)))-((2/(3*m)*k2*(x1-d)**3))
-
-#voltage_equation = sym.solve(F, v)
-
-#vdiff = sym.diff(v)
-
-#answer_xe = sym.solve(vdiff = 0, xe)
-
-#sym.pprint(answer_xe)
-#print("")
