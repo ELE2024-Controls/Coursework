@@ -20,34 +20,21 @@ k_value = 1880
 b_value = 10.4
 φ_value = 42
 
-def evaluate_at_given_parameters(z):
-    """
-    :param z:
-    :return:
-    """
-    return float(z.subs([(m, m_value), (g, g_value), (d, d_value), (δ, δ_value), (r, r_value), (R, R_value), (L0, L0_value), (L1, L1_value), (α, α_value), (c, c_value), (k, k_value), (b, b_value), (φ, φ_value)]))
+X_min = d_value + (m_value * g_value * sym.sin(φ_value)/k_value)
+X_max = δ_value
+x_value = 0.75 * X_min + 0.25 * X_max
 
-X_min = d + (m * g * sym.sin(φ)/k)
-X_max = δ
-x1 = 0.75 * X_min + 0.25 * X_max
-
-y = δ - x1
-L = L0 + (L1 * np.exp(-α * y))
+y_value = δ_value - x_value
+L_value = L0_value + (L1_value * sym.exp(-α_value * y_value))
 
 q, u, w = sym.symbols('q, u, w', real=True, positive=True)
 s, t = sym.symbols('s, t')
 
-q = 2*c/3*m(R*y+L)**2
+q = 2*c_value/3*m_value(R_value*y_value+L_value)**2
 
-u = 2*b/3*m
+u = 2*b_value/3*m_value
 
-w = 2(k1+k2*3(x1-d)**2)/3*m
-
-X_min_value = evaluate_at_given_parameters(X_min)
-X_max_value = evaluate_at_given_parameters(X_max)
-L_value = evaluate_at_given_parameters(L)
-y_value = evaluate_at_given_parameters(y)
-
+w = 2(k1+k2*3(x_value-d_value)**2)/3*m_value
 
 transfer_function = q / (s + (u/2) - ((u**2 - u*w)**0.5/2))(s + (u/2) - ((u**2 - u*w)**0.5/2))
 
