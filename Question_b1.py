@@ -2,7 +2,7 @@ import sympy as sym
 import numpy as np
 from scipy.integrate import solve_ivp
 
-m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq = sym.symbols('m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq')
+m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, x, xe, x1, x2, k1, k2, i, y, veq = sym.symbols('m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, x, xe, x1, x2, k1, k2, i, y, veq')
 
 #Question B1 - Show that the system can equilibrate only at those positions xe that satisfy xmin < xe < xmax,
 
@@ -61,7 +61,6 @@ class System: #For Non-linear simulation
         """
         This function computes and updates new position
         of ball and apply given voltage for "dt" time
-
         :param voltage: voltage input (V)
         :param dt: Time discrete interval
         """
@@ -93,15 +92,20 @@ x2eq = 0
 y = δ - x1
 L = L0 + (L1 * sym.exp(-α * y))
 
-x1 = xe
+x1 = x
 x2 = sym.diff(x1)
 dx2 = sym.diff(x2)
-dx2 = (v**2)*(2*c/m*3*(R*y+L)**2) + (2/3)*g*sym.sin(φ) - (2/3)*b*x2 - (2/3*m)*k1*(x1 - d)-(2/3*m)*k2*(x1-d)**3
+dx2 = 2*m*c*(v**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1 - 2*m*b*x2
+
 
 # defining Xe(x1) and X2 at Equilibrium point
 
+x1eq = xe
 x2eq = 0
-dx2eq = 0
+
+dx2_eq = 2*m*c*(veq**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1eq - 2*m*b*x2eq
+
+dx2_eq = 0
 X_min = d + (m * g * sym.sin(φ)/k)
 X_max = δ
 
@@ -139,8 +143,9 @@ L_max_value = L0_value + (L1_value * sym.exp(-α_value * y_max_value))
 
 #checking validity of dx2eq at xmin and max
 
-dx2eq_min = (veq**2)*(2*c_value/m_value*3*(R_value*y_min_value+L_min_value)**2) + (2/3)*g_value*sym.sin(φ_value) - (2/3)*b_value*x2eq - (2/3*m_value)*k1*(X_min_value - d_value)-(2/3*m_value)*k2*(X_min_value-d_value)**3
-dx2eq_max = (veq**2)*(2*c_value/m_value*3*(R_value*y_max_value+L_max_value)**2) + (2/3)*g_value*sym.sin(φ_value) - (2/3)*b_value*x2eq - (2/3*m_value)*k1*(X_max_value - d_value)-(2/3*m_value)*k2*(X_max_value-d_value)**3
+dx2eq_min = 2*m_value*c_value*(veq**2)/(R_value*y_min_value+L_min_value)**2 + 2*m_value**2*g_value*sym.sin(φ_value) - 2*m_value*k_value*X_min_value - 2*m_value*b_value*x2eq
+
+dx2eq_max = 2*m_value*c_value*(veq**2)/(R_value*y_max_value+L_max_value)**2 + 2*m_value**2*g_value*sym.sin(φ_value) - 2*m_value*k_value*X_max_value - 2*m_value*b_value*x2eq
 
 print("")
 print("Validating dx2eq at X_min")
@@ -151,18 +156,17 @@ print("Validating dx2eq at X_max")
 print("")
 sym.pprint(dx2eq_max)
 
-
 #Determine the equilibrium voltage and current as a function of xe
 #and determine the position xe* where the corresponding equilibrium
 #voltage attains its maximum value.
 
-# Feq = (veq**2)*(2*c_value/m_value*3*(R_value*y_min_value+L_min_value)**2) + (2/3)*g_value*sym.sin(φ_value) - (2/3)*b_value*x2eq - (2/3*m_value)*k1*(X_min_value - d_value)-(2/3*m_value)*k2*(X_min_value-d_value)**3
-# sym.solve(Feq, veq)
+#dx2eq = 2*m*c*(v**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1eq - 2*m*b*x2eq
 
-#print("")
-#print("Finding veq")
-#print("")
-#sym.pprint(veq)
+veq_value = sym.solve(dx2_eq, veq)
 
-#answer_voltage = sym.solve(Feq, veq)
-#answer_current = sym.solve(Feq, ieq)
+print("")
+print("Finding veq in terms of xe")
+print("")
+sym.pprint(veq_value)
+
+# CURRENT ERROR  the solve function returns [], according to stack overflow this function should rearrage dx2 to give expression for veq
