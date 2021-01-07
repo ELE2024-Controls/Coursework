@@ -116,7 +116,6 @@ X_max = δ
 
 # xmin < xe < δ,
 
-
 print("")
 print("Equation for X_min")
 print("")
@@ -169,6 +168,9 @@ sym.pprint(dx2eq_max)
 
 #-------------FINDING VEQ AND IEQ IN TERMS OF XE -------------------
 
+y = δ - xe
+L = L0 + (L1 * sym.exp(-α * y))
+
 dx2_eq = 2*m*c*(veq**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1eq - 2*m*b*x2eq
 
 veq_eqn = sym.solve(dx2_eq, veq)
@@ -192,3 +194,6 @@ sym.pprint(ieq_eqn)
 # CURRENT ERROR  solving gives an expression for Veq but applying v=ir  doesnt work
 # TO DO : validation of xmin - xmax
 #         xe* where veq is at max value
+
+#maybe do timespan against veq against xe?
+# or veq is max when dveq/dxe is 0?
