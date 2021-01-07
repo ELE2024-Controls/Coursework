@@ -28,11 +28,17 @@ c_value = 6815
 k_value = 1880
 b_value = 10.4
 
-
 # Board values
 φ_value = 0.733038 #radians
 
-class System:
+#END OF INITIALISATION
+
+
+#== SIMULATION FRAMEWORKS =====
+#Will create library later on for this for other questions
+#Find non-linear and linear equations
+#For linear simulation, use transfer functions.
+class System: #For Non-linear simulation
 
     def __init__(self, mass=m_value, radius=r_value,dampening=b_value, spring=k_value, x=δ_value/2, velocity=0): #initialising x between magnet and damp.
         """
@@ -75,9 +81,10 @@ class System:
         self.y = solution.y[1][-1]
         self.theta = solution.y[2][-1]
 
+# ========== END OF SIMULATION FRAMEWORK ===========
+
 # Equilibrium point
 # x - position of ball
-
 # by graph of example, ball starts at, if δ max length
 x2eq = 0
 
