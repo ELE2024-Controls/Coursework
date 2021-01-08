@@ -1,0 +1,41 @@
+D1 during the coursework, multiple softwares were used to facilitate collaboration efforts. 
+these softwares included teams to meet as a group to distribute workload and talk in real 
+time if this was needed for collaboration efforts, during work on section a, microsoft 
+whiteboard was used to pool together ideas and work in one space, that way everyone 
+could be on the same page and work as one. during the coding efforts, github was used to
+upload code on a regular basis for debugging. if one group member got stuck while coding
+their code would be uploaded to github for the other group members to advance the code.
+the github repository can be found here; (LINK), using github increased productivity
+massively, rather than one person getting stuck on a single piece of code and holding 
+everyone else up. all group members could pitch in to accelerate the coding process
+and prevent holdups. Throughout all parts of the coursework, whatsapp and discord were
+used to schedule meetings or request information or help from the group and to upload pdf
+files showing progress. the group chat was also used to make announcements, such as 
+completing a piece of code or new uploads to the repository.
+
+D2 - work was distributed evenly, with collaboration efforts being made where necessary
+     the group contributed where they needed to, which led to the work being completed
+     on time with no disagreements within the group
+   
+   - all group members attended scheduled meetings and spent as much time as was necessary 
+     to complete work or recieve tasks, this sometimes led to meetings being 3 hours long
+     in the case of a whiteboard collaboration session. but as this was necessary to 
+     complete the task, the team stayed
+   
+   - productivity within the group was excellent, for example. during the progression of 
+     section B, one group member would get stuck on debugging a piece of code they wrote.
+     request help in the whatsapp and the code would be uploaded to github. picked up by 
+     another group member and debugged and completed in a timely manner.
+
+   - group members recognised that this task was important to all of us, so there was no
+     issue or embarassment requesting help from the group as everyone within the group 
+     knew that this task was a team effort, and the extra work one member put in to aid 
+     another member would also benefit their mark too at the end of the task. 
+
+D3 the only real problem faced was in task delagation, with one group member completing 
+section a themselves, it was later found out during the coding of section b, that the 
+wrong equation was used in defining the system (eg a non-linear spring was used in place
+of an elastic one). this set the group back a few days while effort had to be redirected
+to correct the error, linearise again and redo transfer functions and rewrite certain
+areas of affected code, but the group members were able to pick up on this and correct 
+it in a timely manner.
