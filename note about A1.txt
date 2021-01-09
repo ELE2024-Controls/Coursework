@@ -1,3 +1,0 @@
-note regarding mistake during working - A1 while calculating fmag, 
-IR{2 should be one instead of 2, this does not affect the final 
-result, just a small typo
