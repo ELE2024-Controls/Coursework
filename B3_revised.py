@@ -1,6 +1,7 @@
 import sympy as sym
 import numpy as np
 import matplotlib.pyplot as plt
+import control as Ctrl
 
 m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq, L = sym.symbols('m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, xe, x1, x2, k1, k2, i, y, veq, L')
 
@@ -46,24 +47,26 @@ diff_z_x2_eq = diff_z_x2.subs(equilibrium_state)
 sym.pprint(diff_z_x2_eq)
 print("===========")
 
-a = diff_z_v.subs(equilibrium_state)
-b = diff_z_x1.subs(equilibrium_state)
-c = diff_z_x2.subs(equilibrium_state)
+A = diff_z_v.subs(equilibrium_state)
+B = diff_z_x1.subs(equilibrium_state)
+C = diff_z_x2.subs(equilibrium_state)
 
-sym.pprint(a)
-sym.pprint(b)
-sym.pprint(c)
+sym.pprint(A)
+sym.pprint(B)
+sym.pprint(C)
 
 
 def substiute(z): #Substitution function
     subsititons = [(k, k_value), (m, m_value), (b,b_value)]
     return float(z.subs(subsititons))
 
-a_value = substiute(a)
-b_value = substiute(b)
-c_value = substiute(c)
-sym.pprint(a_value)
-sym.pprint(b_value)
+A_value = substiute(A)
+B_value = substiute(B)
+C_value = substiute(C)
+
+sym.pprint(A_value)
+sym.pprint(B_value)
+sym.pprint(C_value)
 
 a, b, c = sym.symbols('a, b, c', real=True, positive=True, imaginary=False)
 s, t = sym.symbols('s, t')
@@ -80,12 +83,17 @@ x1_t = sym.inverse_laplace_transform(transfer_function, s, t)
 sym.pprint(x1_t.simplify())
 print(sym.latex(x1_t.simplify()))
 
-print ("Step response:")
-x1_step_t = sym.inverse_laplace_transform(transfer_function/s, s, t)
-sym.pprint(x1_step_t)
-print(sym.latex(x1_step_t.simplify()))
-print ("Freq response:")
-w = sym.symbols('w', real=True, positive=True)
+num_x = [A_value]
+den_x = [1, C_value + B_value] #Figure priming transfer function in program
+G_x = Ctrl.TransferFunction(num_x, den_x)
+sym.pprint(G_x)
+
+t_span = np.linspace(0, 0.2, 250)
+F_input = 0
+
+#No controller simulation
+t_out_x, x1_out, _ = Ctrl.forced_response(G_x, t_span, F_input)
+
 
 # x1_freq_t = sym.inverse_laplace_transform(transfer_function*w**2/(s**2 + w**2), s, t)
 # sym.pprint(x1_freq_t)
