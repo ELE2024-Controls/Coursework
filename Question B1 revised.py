@@ -95,15 +95,14 @@ L = L0 + (L1 * sym.exp(-α * y))
 x1 = x
 x2 = sym.diff(x1)
 dx2 = sym.diff(x2)
-dx2 = 2*m*c*(v**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1 - 2*m*b*x2
-
+dx2 = 2*c*v**2/(R*y+L)**2 + 2*g*sym.sin(φ) - 2*k*x1/m - 2*b*x2/m
 
 # defining Xe(x1) and X2 at Equilibrium point
 
 x1eq = xe
 x2eq = 0
 
-dx2_eq = 2*m*c*(veq**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1eq - 2*m*b*x2eq
+dx2_eq = 2*c*veq**2/(R*y+L)**2 + 2*g*sym.sin(φ) - 2*k*x1eq/m - 2*b*x2eq/m
 
 print("")
 print("ẋ2 at equilibrium =")
@@ -147,10 +146,9 @@ L_max_value = L0_value + (L1_value * sym.exp(-α_value * y_max_value))
 
 #checking validity of dx2eq at xmin and max
 
-dx2eq_min = 2*m_value*c_value*(veq**2)/(R_value*y_min_value+L_min_value)**2 + 2*m_value**2*g_value*sym.sin(φ_value) - 2*m_value*k_value*X_min_value - 2*m_value*b_value*x2eq
+dx2eq_min = 2*c_value*veq**2/(R_value*y_min_value+L_min_value)**2 + 2*g_value*sym.sin(φ_value) - 2*k_value*X_min_value/m_value - 2*b_value*x2eq/m_value
 
-dx2eq_max = 2*m_value*c_value*(veq**2)/(R_value*y_max_value+L_max_value)**2 + 2*m_value**2*g_value*sym.sin(φ_value) - 2*m_value*k_value*X_max_value - 2*m_value*b_value*x2eq
-
+dx2eq_max = 2*c_value*veq**2/(R_value*y_max_value+L_max_value)**2 + 2*g_value*sym.sin(φ_value) - 2*k_value*X_max_value/m_value - 2*b_value*x2eq/m_value
 
 print("")
 print("Validating dx2eq at X_min")
@@ -171,7 +169,7 @@ sym.pprint(dx2eq_max)
 y = δ - xe
 L = L0 + (L1 * sym.exp(-α * y))
 
-dx2_eq = 2*m*c*(veq**2)/(R*y+L)**2 + 2*m**2*g*sym.sin(φ) - 2*m*k*x1eq - 2*m*b*x2eq
+dx2_eq = 2*c*veq**2/(R*y+L)**2 + 2*g*sym.sin(φ) - 2*k*xe/m - 2*b*x2eq/m
 
 veq_eqn = sym.solve(dx2_eq, veq)
 
