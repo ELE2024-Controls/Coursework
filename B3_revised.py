@@ -84,9 +84,9 @@ sym.pprint(x1_t.simplify())
 print(sym.latex(x1_t.simplify()))
 
 num_x = [A_value]
-den_x = [1, C_value + B_value] #Figure priming transfer function in program
+den_x = [1 ,C_value, B_value] #Figure priming transfer function in program
 G_x = Ctrl.TransferFunction(num_x, den_x)
-sym.pprint(G_x)
+
 
 t_span = np.linspace(0, 0.2, 250)
 F_input = 0
@@ -94,7 +94,11 @@ F_input = 0
 #No controller simulation
 t_out_x, x1_out, _ = Ctrl.forced_response(G_x, t_span, F_input)
 
-
+plt.plot(t_out_x,x1_out)
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid()
+plt.show()
 # x1_freq_t = sym.inverse_laplace_transform(transfer_function*w**2/(s**2 + w**2), s, t)
 # sym.pprint(x1_freq_t)
 # print(sym.latex(x1_freq_t.simplify())) Takes too long to calculate
