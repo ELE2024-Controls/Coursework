@@ -54,6 +54,17 @@ sym.pprint(a)
 sym.pprint(b)
 sym.pprint(c)
 
+
+def substiute(z): #Substitution function
+    subsititons = [(k, k_value), (m, m_value), (b,b_value)]
+    return float(z.subs(subsititons))
+
+a_value = substiute(a)
+b_value = substiute(b)
+c_value = substiute(c)
+sym.pprint(a_value)
+sym.pprint(b_value)
+
 a, b, c = sym.symbols('a, b, c', real=True, positive=True, imaginary=False)
 s, t = sym.symbols('s, t')
 transfer_function = a/((s**2) + (c*s) + b)

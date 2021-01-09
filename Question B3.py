@@ -125,6 +125,3 @@ print ("")
 
 
 #NOTE:  Need to intialise transfer functions numerically before can be outputted graphically
-#CURRENT ISSUE transfer function inputs correctly, however the inverse
-#laplace transform results in an infinite recurrance, step and impulse 
-#response cant be calcualted

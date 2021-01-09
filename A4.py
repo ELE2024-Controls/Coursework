@@ -31,7 +31,3 @@ c = diff_z_x2.subs(equilibrium_state)
 sym.pprint(a)
 sym.pprint(b)
 sym.pprint(c)
-
-def subsitute(z): #Substitution function
-    subsititons = [(M, M_value), (m, m_value), (ell, ell_value), (g, g_value)]
-    return float(z.subs(subsititons))
