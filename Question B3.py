@@ -69,6 +69,9 @@ print ("")
 sym.pprint(C)
 print ("")
 
+A, B, C = sym.symbols('A, B, C', real=True, positive=True)
+s, t = sym.symbols('s, t')
+
 transfer_function = A/((s**2) + (C*s) + B)
 
 print ("")
@@ -101,18 +104,10 @@ print ("")
 sym.pprint(t_imp_x)
 print ("")
 
-plt.plot (t_span, t_imp_x)
-plt.suptitle('Impulse response', fontsize=16)
-plt.xlabel('time(s)')
-plt.ylabel('Position of wooden ball')
-plt.grid()
-plt.show()
-
 # step response
 
 step_x = 1 / s
 step_response_x = transfer_function  * step_x
-
 
 print ("")
 print ("step x")
@@ -127,13 +122,9 @@ print ("")
 sym.pprint(t_step_x)
 print ("")
 
-plt.plot(t_span, t_imp_x)
-plt.suptitle('Step response', fontsize=16)
-plt.xlabel('time(s)')
-plt.ylabel('Position of wooden ball')
-plt.grid()
-plt.show()
 
+
+#NOTE:  Need to intialise transfer functions numerically before can be outputted graphically
 #CURRENT ISSUE transfer function inputs correctly, however the inverse
 #laplace transform results in an infinite recurrance, step and impulse 
 #response cant be calcualted

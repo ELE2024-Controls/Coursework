@@ -54,7 +54,7 @@ sym.pprint(a)
 sym.pprint(b)
 sym.pprint(c)
 
-a, b, c = sym.symbols('a, b, c', real=True, positive=True)
+a, b, c = sym.symbols('a, b, c', real=True, positive=True, imaginary=False)
 s, t = sym.symbols('s, t')
 transfer_function = a/((s**2) + (c*s) + b)
 
@@ -66,7 +66,7 @@ print ("")
 
 print ("Impulse response")
 x1_t = sym.inverse_laplace_transform(transfer_function, s, t)
-sym.pprint(x1_t)
+sym.pprint(x1_t.simplify())
 print(sym.latex(x1_t.simplify()))
 
 print ("Step response:")
@@ -75,6 +75,12 @@ sym.pprint(x1_step_t)
 print(sym.latex(x1_step_t.simplify()))
 print ("Freq response:")
 w = sym.symbols('w', real=True, positive=True)
-x1_freq_t = sym.inverse_laplace_transform(transfer_function*w**2/(s**2 + w**2), s, t)
-sym.pprint(x1_freq_t)
-print(sym.latex(x1_freq_t.simplify()))
+
+# x1_freq_t = sym.inverse_laplace_transform(transfer_function*w**2/(s**2 + w**2), s, t)
+# sym.pprint(x1_freq_t)
+# print(sym.latex(x1_freq_t.simplify())) Takes too long to calculate
+
+
+
+
+
