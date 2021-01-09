@@ -4,28 +4,7 @@ import math
 import control as ctrl
 import matplotlib.pyplot as plt
 
-m, g, d, δ, r, R, L, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, x1, Xe, x2 = sym.symbols('m, g, d, δ, r, R, L, L0, L1, α, c, k, b, φ, v, x1, x2, k1, k2, i, y, x1, Xe, x2')
-
-F = (v**2)*(2*c/m*3*(R*y+L)**2) + (2/3)*g*sym.sin(φ) - (2/3)*b*x2 - (2/3*m)*k1*(x1 - d)-(2/3*m)*k2*(x1-d)**3
-
-Xmax = δ
-Xmin = d + (m * g * sym.sin(φ)/k)
-
-# Equilibrium point
-Feq = 0
-x2eq = 0
-x1eq = Xe = (0.25 * Xmax) + (0.75 * Xmin)
-#veq = ieq * R
-
-#dphi_F_eq = dphi_F.subs([(F, Feq), (x2, x2eq), (x4, x4eq)])
-#dphi_x3_eq = dphi_x3.subs([(F, Feq), (x3, x3eq), (x4, x4eq)])
-
-q = 2 * c / 3 * m * (R * y + L) ** 2
-u = 2 * b / 3 * m
-w = 2 * (k1 + k2 * 3 * (x1eq - d) ** 2) / 3 * m
-
-
-#Fmag = c(i**2/y**2)
+m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, x, xe, x1, x2, k1, k2, ieq, y, veq = sym.symbols('m, g, d, δ, r, R, l, L0, L1, α, c, k, b, φ, v, x, xe, x1, x2, k1, k2, ieq, y, veq')
 
 # GIVEN VALUES!
 m_value = 0.425
@@ -42,25 +21,38 @@ k_value = 1880
 b_value = 10.4
 φ_value = 42
 
-def evaluate_at_given_parameters(z):
-    """
-    :param z:
-    :return:
-    """
-    return float(z.subs( [(m, m_value), (g, g_value), (d, d_value), (δ, δ_value), (r, r_value), (R, R_value), (L0, L0_value), (L1, L1_value), (α, α_value), (c, c_value), (k, k_value), (b, b_value), (φ, φ_value)]))
+x1 = xe
+x2 = sym.diff(x1)
+dx2 = sym.diff(x2)
 
-L= L0 + (L1 * math.exp(-α_value * (α_value - x1)))
+y = δ - xe
+L = L0 + (L1 * sym.exp(-α * y))
 
-#Fmag_value = evaluate_at_given_parameters(Fmag)
-#L_value = evaluate_at_given_parameters(L)
-#y_value = evaluate_at_given_parameters(y)
+dx2 = 2*c*v**2/(R*y+L)**2 + 2*g*sym.sin(φ) - 2*k*x1/m - 2*b*x2/m
 
-#F_value = evaluate_at_given_parameters(F)
+# defining Xe(x1) and X2 at Equilibrium point
 
-q, u, w = sym.symbols('q, u, w', real=True, positive=True)
+x2eq = 0
+dx2eq = 0
+
+X_min = d_value + (m_value * g_value * sym.sin(φ_value)/k_value)
+X_max = δ_value
+xe = 0.75 * X_min + 0.25 * X_max
+
+y_value = δ_value - xe
+L_value = L0_value + (L1_value * sym.exp(-α_value * y_value))
+
+
+A, B, C = sym.symbols('A, B, C', real=True, positive=True)
 s, t = sym.symbols('s, t')
 
-transfer_function = ctrl.TransferFunction([q], [1, u, w])
+A = 2*c*2*v/m*(R*y*L)**2
+
+B = 2*k/m
+
+C = 2*b/m
+
+transfer_function = ctrl.TransferFunction([A], [1, C, B])
 
 def pid (kp, ki, kd):
 
@@ -70,9 +62,9 @@ def pid (kp, ki, kd):
 
     return pid_f
 
-kp =
-ki =
-kd =
+kp = 1
+ki = 1
+kd = 1
 
 controller = pid(kp, ki, kd)
 
