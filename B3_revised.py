@@ -83,13 +83,12 @@ x1_t = sym.inverse_laplace_transform(transfer_function, s, t)
 sym.pprint(x1_t.simplify())
 print(sym.latex(x1_t.simplify()))
 
-num_x = [A_value]
+num_x = [1]
 den_x = [1 ,C_value, B_value] #Figure priming transfer function in program
 G_x = Ctrl.TransferFunction(num_x, den_x)
 
-
-t_span = np.linspace(0, 0.2, 250)
-F_input = 0
+t_span = np.linspace(0, 20, 2500)
+F_input = np.sin(100*t_span**2)
 
 #No controller simulation
 t_out_x, x1_out, _ = Ctrl.forced_response(G_x, t_span, F_input)
