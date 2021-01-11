@@ -15,27 +15,33 @@ completing a piece of code or new uploads to the repository.
 
 D2 - work was distributed evenly, with collaboration efforts being made where necessary
      the group contributed where they needed to, which led to the work being completed
-     on time with no disagreements within the group
-   
-   - all group members attended scheduled meetings and spent as much time as was necessary 
-     to complete work or recieve tasks, this sometimes led to meetings being 3 hours long
-     in the case of a whiteboard collaboration session. but as this was necessary to 
-     complete the task, the team stayed
+     on time
+
+   - group members attended scheduled meetings and most spent as much time as was 
+     necessary to complete work or recieve tasks, this sometimes led to meetings 
+     being 3 hours long in the case of a whiteboard collaboration session. but as
+     this was necessary to complete the task, most of the team stayed
    
    - productivity within the group was excellent, for example. during the progression of 
      section B, one group member would get stuck on debugging a piece of code they wrote.
-     request help in the whatsapp and the code would be uploaded to github. picked up by 
-     another group member and debugged and completed in a timely manner.
+     request help in the whatsapp group, and the code would be uploaded to github. 
+     picked up by another group member and debugged and completed in a timely manner.
 
-   - group members recognised that this task was important to all of us, so there was no
-     issue or embarassment requesting help from the group as everyone within the group 
+   - most group members recognised that this task was important to all of us, so there 
+     was no issue or embarassment requesting help from the group as everyone within the group 
      knew that this task was a team effort, and the extra work one member put in to aid 
      another member would also benefit their mark too at the end of the task. 
 
-D3 the only real problem faced was in task delagation, with one group member completing 
-section a themselves, it was later found out during the coding of section b, that the 
-wrong equation was used in defining the system (eg a non-linear spring was used in place
-of an elastic one). this set the group back a few days while effort had to be redirected
-to correct the error, linearise again and redo transfer functions and rewrite certain
-areas of affected code, but the group members were able to pick up on this and correct 
-it in a timely manner.
+D3 the main problem within the group arose from mohammads role, the rest of the group met
+to progress with part A, we had gotten halfway through section A. mohammad had decided 
+on his own accord, to complete section A himself, he did complete section A in a timely 
+manner, however none of the previous work done by the rest of the group was used. mohammad
+used the incorrect system for question A1 which led to an incorrect model, linearisation and
+transfer function. all of which were essential to section B, the onus on which was placed on 
+David and Neivydas to complete, upon being asked to complete part A again using the correct 
+system that the rest of the group had been working with thusfar, so that the proceeding 
+sections could be completed. mohammad made no attempt to finish part A correctly. the burden
+of completing the task then fell to the rest of the group who then had to make up for lost 
+time. on completion of part A correctly. mohammads work that had been finished was rendered 
+obscelete, and therfore had no use to the rest of the group. this was the only problem the
+group had faced when completing this task. 
